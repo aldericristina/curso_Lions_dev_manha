@@ -1,8 +1,8 @@
 import AgendamentoRepository from "../repository/agendamento.repository.js";
-async function cadastrar({nomePet,especie,nomeDono, telkefoneDono, serviço,data}){
+async function cadastrar({nomePet,especie,nomeDono, telefoneDono, serviço,data}){
 
+let valor =0
 
-    let valor =0
 if (especie == "cao"){
 switch ( serviço){
 case "Banho":
@@ -52,8 +52,14 @@ const agendamento=await AgendamentoRepository.criar({
 })
  return agendamento;  
 }
+
+async function buscarTodos(){
+   const usuarios= await AgendamentoRepository.buscarTodos();
+   return usuarios;
+}   
 const AgendamentoService= {
     cadastrar,
+    buscarTodos,
 }
 
 export default AgendamentoService;

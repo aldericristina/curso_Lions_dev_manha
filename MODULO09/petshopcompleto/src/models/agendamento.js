@@ -9,7 +9,7 @@ const agendamentoSchema =  new mongoose.Schema({
       type: String,
       required: [true, "A especie do pet é obrigatoria"],
       enum: {
-        values: [ "Cão","Gato","Outro"],
+        values: [ "Cao","Gato","Outro"],
         message: "A especie deve ser Cão, Gato ou outro"
       }
     },
@@ -25,7 +25,7 @@ const agendamentoSchema =  new mongoose.Schema({
     type: String,
     required: [true, "O serviço é obrigatorio"],
     enum: {
-        values: ["Banho, Tosa ou Banho"],
+        values: ["Banho", "Tosa", "Banho e Tosa"],
         message: "O Serviço deve ser Banho, Tosa ou Banho e Tosa",
     }
     },
@@ -40,8 +40,8 @@ const agendamentoSchema =  new mongoose.Schema({
         type: String,
         default: "Agendado", 
         enum: {
-        values: ["Agendado,Concluído ou Cancelado"],
-            message: "O serviço foi Agendado",
+        values: ["Agendado","Concluído","Cancelado"],
+            message: "O serviço deve ser Agendado, Concluído ou Cancelado",
         }
      }
 });

@@ -13,10 +13,22 @@ async   function cadastrar(req,res,next){
         }); 
         res.status(201).json({mensagem: "Agendamento criado com sucesso!", agendamento: novoAgendamento})
     }   catch (erro){
-        next(erro);
-    }   res.status(401).json({mensagem: "Erro ao criar agendamento: $ {erro.message}"})
+        res.status(401).json({mensagem: `Erro ao criar agendamento: ${erro.message}`})
+    }   
+   
 }
+async function buscarTodos(req,res,){
+    try {   
+        const agendamentos= await AgendamentoService.buscarTodos();
+        res.status(200).json({agendamentos})
+    } catch (erro){
+        res.status(401).json({mensagem: `Erro ao buscar agendamentos: ${erro.message}`})
+    }}
+
 const AgendamentoController = {
     cadastrar,
+    buscarTodos,
 }
+
+
 export default AgendamentoController;
