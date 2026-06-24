@@ -1,0 +1,59 @@
+import AgendamentoRepository from "../repository/agendamento.repository.js";
+async function cadastrar({nomePet,especie,nomeDono, telkefoneDono, serviço,data}){
+
+
+    let valor =0
+if (especie == "cao"){
+switch ( serviço){
+case "Banho":
+valor = 50
+bresk
+case  "Tosa":
+valor = 60
+break
+case "Banho e Tosa":
+valor =100
+break 
+}
+}
+if (especie == "gato"){
+    switch ( serviço){
+case "Banho":
+valor =60
+bresk
+case  "Tosa":
+valor =70
+break
+case "Banho e Tosa":
+valor =110
+break 
+}
+}
+if (especie == "outro"){
+switch ( serviço){
+case "Banho":
+valor =40
+bresk
+case  "Tosa":
+valor =50
+break
+case "Banho e Tosa":
+valor =80
+break 
+}}
+const agendamento=await AgendamentoRepository.criar({
+    nomePet,
+    especie,
+    telefoneDono,
+    nomeDono,
+    serviço,   
+    data,
+    valor,
+})
+ return agendamento;  
+}
+const AgendamentoService= {
+    cadastrar,
+}
+
+export default AgendamentoService;
