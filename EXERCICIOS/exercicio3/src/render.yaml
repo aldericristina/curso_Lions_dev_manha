@@ -1,8 +1,8 @@
-services:   
+services: 
 - type: web
 name: exercicio3
 plan: free
-runtime: free 
+runtime: node 
 buildCommand: "npm install"
 startCommand: "npm start"
 autoDeploy: true
