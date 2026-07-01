@@ -1,16 +1,14 @@
-import mongoose from "mongoose";    
+import mongoose from "mongoose";  
 
-mongoose.connect("mongodb://localhost:27017/myapp", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}); 
-const db = mongoose.connection;
+async function conectarBanco() {
+    const MONGO_URI = process.env.MONGO_URI;
+    if (!MONGO_URI) {
+        throw new Error("MONGO_URI não está definido no arquivo .env");
+    }
+    await mongoose.connect(MONGO_URI)
+    console.log("Banco de dados conectado com sucesso");  
+}
 
-db.on("error", console.error.bind(console, "Erro de conexão:"));
-
-db.once("open", function() {
-    console.log("Conexão bem-sucedida ao MongoDB!");
-});
 
 export default conectarBanco;
 
